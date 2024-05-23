@@ -1,0 +1,11 @@
+apiVersion: v2
+name: parent-child-helm-poc
+description: A Helm chart with subcharts
+version: 0.1.0
+dependencies:
+  - name: subchart1
+    version: 0.1.0
+    repository: file://charts/subchart1
+  - name: subchart2
+    version: 0.1.0
+    repository: file://charts/subchart2

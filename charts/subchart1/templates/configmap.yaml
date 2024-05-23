@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: subchart1-configmap
+data:
+  key1: {{ .Values.configData.key1 }}
+  key2: {{ .Values.configData.key2 }}
+  message: {{ .Values.global.configData.msg }}
+  subchart1message: {{ .Values.testmsg}}
+
+

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-script
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-script
+  template:
+    metadata:
+      labels:
+        app: java-script
+    spec:
+      volumes:
+        # `name` here must match the name
+        # specified in the volume mount
+        - name: xml-configmap-volume
+          #
+          configMap:
+            # `name` here must match the name
+            # specified in the ConfigMap's YAML
+            name: subchart1-configmap
+
+      containers:
+        - name: java-script
+          image: umaran1218/flightbookingsystemsample:version1.1
+          volumeMounts:
+          - mountPath: /etc/config
+            name: xml-configmap-volume
+          resources:
+            requests:
+              cpu: 100m
+              memory: 1Gi
